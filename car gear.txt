@@ -1,0 +1,516 @@
+import java.util.*;
+public class MainClass5{
+	
+	public static void main(String[] args){
+		Scanner input = new Scanner(System.in);
+		int ch;
+		
+		do
+		{
+			System.out.println("\nSelect the vehicle you want to access: ");
+			System.out.println("1.Car\n2.Bike\n3.Bicycle\n4.Exit");
+			ch=input.nextInt();
+			
+			switch (ch)
+			{
+			case 1: System.out.println("Car Accessed");
+					Car c1 = new Car();
+					c1.gearChange();
+					c1.speedUp();
+					c1.applyBrakes();
+					break;
+			case 2: System.out.println("Bike Accessed");
+					Bike b1 = new Bike();
+					b1.gearChange();
+					b1.speedUp();
+					b1.applyBrakes();
+					break;
+			case 3: System.out.println("Bicycle Accessed");
+					Bicycle bi1 = new Bicycle();
+					bi1.gearChange();
+					bi1.speedUp();
+					bi1.applyBrakes();
+					break;
+			case 4: System.out.println("You have successfully exited.");
+					break;
+			default: System.out.println("Enter appropriate choice.");
+			}
+		}while (ch!=4);
+	}
+}
+
+interface vehicle
+{
+	void gearChange();
+	void speedUp();
+	void applyBrakes();
+}
+
+class Car implements vehicle
+{
+	int gear, speed;
+	Scanner obj = new Scanner(System.in);
+	
+	public void gearChange()
+	{
+		int g1;
+		
+		while (1>0)
+		{
+		System.out.println("\nEnter the gear at which the car is currently running: ");
+		g1=obj.nextInt();
+		
+		if (g1>6 || g1<1)
+		System.out.println("Enter appropriate gear.");
+		else
+		gear = g1;
+		break;
+		}
+		
+		if (gear<2)
+		{
+			int g2,ch1;
+			
+			do
+			{
+				System.out.println("\nSelect the required option: ");
+			    System.out.println("1.Increase gear.\n2.Do not change gear.\n3.Exit");
+			    ch1 = obj.nextInt();
+			    
+			    switch (ch1)
+			    {
+			    case 1: System.out.println("Enter the gear at which you want the car to be: ");
+			    		g2 = obj.nextInt();
+			    		
+			    		gear = g2;
+			    		System.out.println("\nGear of the car has been changed successfully.");
+			    		break;
+			    case 2: System.out.println("The gear of the car is not changed.");
+			    		break;
+			    case 3: System.out.println("You have successfully exited.");
+			    		break;
+			    default: System.out.println("\nEnter appropriate choice.");
+			    } 
+			}while (ch1!=3);
+		}
+		else if (gear>1 && gear<6)
+		{
+			int g3,ch2;
+			
+			do
+			{
+				System.out.println("\nSelect the required option: ");
+				System.out.println("1.Increase gear.\n2.Decrease gear.\n3.Do not change gear.");
+				ch2 = obj.nextInt();
+			
+				switch (ch2)
+				{
+				case 1: System.out.println("Enter the gear at which you want the car to be: ");
+						g3 = obj.nextInt();
+				
+						gear = g3;
+						System.out.println("\nGear of the car has been changed successfully.");
+						break;
+				case 2: System.out.println("Enter the gear at which you want the car to be: ");
+						g3 = obj.nextInt();
+				
+						gear = g3;
+						System.out.println("\nGear of the car has been changed successfully.");
+						break;
+				case 3: System.out.println("The gear of the car is not changed.");
+	    				break;
+	    		default: System.out.println("\nEnter appropriate choice.");
+	    		}
+			}while (ch2!=3);	
+    	}
+		else if (gear==6)
+		{
+			int g4, ch3;
+			
+			do
+			{
+				System.out.println("\nSelect the required option: ");
+				System.out.println("1.Decrease gear.\n2.Do not change gear.");
+				ch3 = obj.nextInt();
+				
+				switch (ch3)
+				{
+				case 1: System.out.println("Enter the gear at which you want the car to be: ");
+						g4 = obj.nextInt();
+						
+						gear = g4;
+						System.out.println("\nGear of the car has been changed successfully.");
+						break;
+				case 2: System.out.println("The gear of the car is not changed.");
+	    				break;
+				default: System.out.println("\nEnter appropriate choice.");
+				} 
+			}while (ch3!=2);
+		}
+		
+		System.out.println("\nThe current gear of the car is "+gear+".");
+	}
+	
+	public void speedUp()
+	{	
+		int speed1,speed2;
+		
+		System.out.println("\nEnter the speed(in kmph) at which the car is running: ");
+		speed1 = obj.nextInt();
+		
+		speed = speed1;
+		
+		System.out.println("\nEnter the speed(in kmph) to be incremented: ");
+		speed2=obj.nextInt();
+		
+		speed=(speed+speed2);
+		
+		System.out.println("\nThe current speed of the car is "+speed+" kmph.");
+	}
+
+	public void applyBrakes() 
+	{
+	String e;
+	
+	System.out.println("\nDo you want to apply brakes? Y/N");
+	e = obj.next();
+	
+	if (e.equalsIgnoreCase("Y"))
+	{
+	int ch4;
+			
+	do
+	{
+		System.out.println("\nSelect the required option: ");
+		System.out.println("1.Stop the car.\n2.Decrease the speed.\n3.Exit");
+		ch4=obj.nextInt();
+		
+		switch (ch4)
+		{
+		case 1: System.out.println("Car stopped.");
+				break;
+		case 2: System.out.println("The car is currently running at a lower speed.");
+				break;
+		case 3: System.out.println("You have successfully exited.");
+				break;
+		default: System.out.println("Enter appropriate choice.");
+		}
+	}while (ch4!=3);	
+	}
+	else
+	{	System.out.println("Brakes are not applied.");
+		System.out.println("The current speed of the car is "+speed);
+	}
+	}
+}
+
+class Bike implements vehicle
+{
+	int gear, speed;
+	Scanner obj = new Scanner(System.in);
+	
+	public void gearChange()
+	{
+		int g1;
+		
+		while (1>0)
+		{
+		System.out.println("\nEnter the gear at which the bike is currently running: ");
+		g1=obj.nextInt();
+		
+		if (g1>5 || g1<1)
+		System.out.println("Enter appropriate gear.");
+		else
+		gear = g1;
+		break;
+		}
+		
+		if (gear<2)
+		{
+			int g2,ch1;
+			
+			do
+			{
+				System.out.println("\nSelect the required option: ");
+			    System.out.println("\n1.Increase gear.\n2.Do not change gear.");
+			    ch1 = obj.nextInt();
+			    
+			    switch (ch1)
+			    {
+			    case 1: System.out.println("Enter the gear at which you want the bike to be: ");
+			    		g2 = obj.nextInt();
+			    		
+			    		gear = g2;
+			    		System.out.println("\nGear of the bike has been changed successfully.");
+			    		break;
+			    case 2: System.out.println("The gear of the bike is not changed.");
+			    		break;
+			    default: System.out.println("\nEnter appropriate choice.");
+			    } 
+			}while (ch1!=2);
+		}
+		else if (gear>1 && gear<5)
+		{
+			int g3,ch2;
+			
+			do
+			{
+				System.out.println("\nSelect the required option: ");
+				System.out.println("1.Increase gear.\n2.Decrease gear.\n3.Do not change gear.");
+				ch2 = obj.nextInt();
+			
+				switch (ch2)
+				{
+				case 1: System.out.println("Enter the gear at which you want the bike to be: ");
+						g3 = obj.nextInt();
+				
+						gear = g3;
+						System.out.println("\nGear of the bike has been changed successfully.");
+						break;
+				case 2: System.out.println("Enter the gear at which you want the bike to be: ");
+						g3 = obj.nextInt();
+				
+						gear = g3;
+						System.out.println("\nGear of the bike has been changed successfully.");
+						break;
+				case 3: System.out.println("The gear of the bike is not changed.");
+	    				break;
+	    		default: System.out.println("\nEnter appropriate choice.");
+	    		}
+			}while (ch2!=3);	
+    	}
+		else if (gear==5)
+		{
+			int g4, ch3;
+			
+			do
+			{
+				System.out.println("\nSelect the required option: ");
+				System.out.println("1.Decrease gear.\n2.Do not change gear.");
+				ch3 = obj.nextInt();
+				
+				switch (ch3)
+				{
+				case 1: System.out.println("Enter the gear at which you want the bike to be: ");
+						g4 = obj.nextInt();
+						
+						gear = g4;
+						System.out.println("\nGear of the bike has been changed successfully.");
+						break;
+				case 2: System.out.println("The gear of the bike is not changed.");
+	    				break;
+				default: System.out.println("\nEnter appropriate choice.");
+				} 
+			}while (ch3!=2);
+		}
+		
+		System.out.println("\nThe current gear of the bike is "+gear+".");
+	}
+	
+	public void speedUp()
+	{	
+		int speed1,speed2;
+		
+		System.out.println("\nEnter the speed(in kmph) at which the bike is running: ");
+		speed1 = obj.nextInt();
+		
+		speed = speed1;
+		
+		System.out.println("\nEnter the speed(in kmph) to be incremented: ");
+		speed2=obj.nextInt();
+		
+		speed=(speed+speed2);
+		
+		System.out.println("\nThe current speed of the bike is "+speed);
+	}
+
+	public void applyBrakes() 
+	{
+	String e;
+	
+	System.out.println("Do you want to apply brakes? Y/N");
+	e = obj.next();
+	
+	if (e.equalsIgnoreCase("Y"))
+	{
+		int ch4;
+		
+		do
+		{
+			System.out.println("Select the required option: ");
+			System.out.println("1.Stop the bike.\n2.Decrease the speed.\n3.Exit");
+			ch4=obj.nextInt();
+			
+			switch (ch4)
+			{
+			case 1: System.out.println("Bike stopped.");
+					break;
+			case 2: System.out.println("The bike is currently running at a lower speed.");
+					break;
+			case 3: System.out.println("You have successfully exited.");
+					break;
+			default: System.out.println("Enter appropriate choice.");
+			}
+		}while (ch4!=3);
+	}
+	else
+	{	System.out.println("Brakes are not applied.");
+		System.out.println("The current speed of the bike is "+speed+" kmph.");
+	}
+	}
+}
+
+class Bicycle implements vehicle
+{
+	int gear, speed;
+	Scanner obj = new Scanner(System.in);
+	
+	public void gearChange()
+	{
+		int g1;
+		
+		while (1>0)
+		{
+		System.out.println("\nEnter the gear at which the bicycle is currently running: ");
+		g1=obj.nextInt();
+		
+		if (g1>21 || g1<1)
+		System.out.println("Enter appropriate gear.");
+		else
+		gear = g1;
+		break;
+		}
+		
+		if (gear<2)
+		{
+			int g2,ch1;
+			
+			do
+			{
+				System.out.println("\nSelect the required option: ");
+			    System.out.println("1.Increase gear.\n2.Do not change gear.");
+			    ch1 = obj.nextInt();
+			    
+			    switch (ch1)
+			    {
+			    case 1: System.out.println("Enter the gear at which you want the bicycle to be: ");
+			    		g2 = obj.nextInt();
+			    		
+			    		gear = g2;
+			    		System.out.println("\nGear of the bicycle has been changed successfully.");
+			    		break;
+			    case 2: System.out.println("The gear of the bicycle is not changed.");
+			    		break;
+			    default: System.out.println("\nEnter appropriate choice.");
+			    } 
+			}while (ch1!=2);
+		}
+		else if (gear>1 && gear<21)
+		{
+			int g3,ch2;
+			
+			do
+			{
+				System.out.println("\nSelect the required option: ");
+				System.out.println("1.Increase gear.\n2.Decrease gear.\n3.Do not change gear.");
+				ch2 = obj.nextInt();
+			
+				switch (ch2)
+				{
+				case 1: System.out.println("Enter the gear at which you want the bicycle to be: ");
+						g3 = obj.nextInt();
+				
+						gear = g3;
+						System.out.println("\nGear of the bicycle has been changed successfully.");
+						break;
+				case 2: System.out.println("Enter the gear at which you want the bicycle to be: ");
+						g3 = obj.nextInt();
+				
+						gear = g3;
+						break;
+				case 3: System.out.println("The gear of the bicycle is not changed.");
+	    				break;
+	    		default: System.out.println("\nEnter appropriate choice.");
+	    		}
+			}while (ch2!=3);	
+    	}
+		else if (gear==21)
+		{
+			int g4, ch3;
+			
+			do
+			{
+				System.out.println("\nSelect the required option: ");
+				System.out.println("1.Decrease gear.\n2.Do not change gear.");
+				ch3 = obj.nextInt();
+				
+				switch (ch3)
+				{
+				case 1: System.out.println("Enter the gear at which you want the bicycle to be: ");
+						g4 = obj.nextInt();
+						
+						gear = g4;
+						System.out.println("\nGear of the bicycle has been changed successfully.");
+						break;
+				case 2: System.out.println("The gear of the bicycle is not changed.");
+	    				break;
+				default: System.out.println("\nEnter appropriate choice.");
+				} 
+			}while (ch3!=2);
+		}
+		
+		System.out.println("\nThe current gear of the bicycle is "+gear);
+	}
+	
+	public void speedUp()
+	{	
+		int speed1,speed2;
+		
+		System.out.println("\nEnter the speed(in kmph) at which the bicycle is running: ");
+		speed1 = obj.nextInt();
+		
+		speed = speed1;
+		
+		System.out.println("\nEnter the speed(in kmph) to be incremented: ");
+		speed2=obj.nextInt();
+		
+		speed=(speed+speed2);
+		
+		System.out.println("\nThe current speed of the bicycle is "+speed);
+	}
+
+	public void applyBrakes() 
+	{
+	String e;
+	
+	System.out.println("Do you want to apply brakes? Y/N");
+	e = obj.next();
+	
+	if (e.equalsIgnoreCase("Y"))
+	{
+		int ch4;
+		
+		do
+		{
+			System.out.println("Select the required option: ");
+			System.out.println("1.Stop the bicycle.\n2.Decrease the speed.");
+			ch4=obj.nextInt();
+			
+			switch (ch4)
+			{
+			case 1: System.out.println("Bicycle stopped.");
+					break;
+			case 2: System.out.println("The bicycle is currently running at a lower speed.");
+					break;
+			case 3: System.out.println("You have successfully exited.");
+					break;
+			default: System.out.println("Enter appropriate choice.");
+			}
+		}while (ch4!=3);
+	}
+	else
+	{	System.out.println("Brakes are not applied.");
+		System.out.println("The current speed of the bicycle is "+speed+" kmph.");
+	}
+	}
+}

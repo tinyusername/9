@@ -1,0 +1,85 @@
+import java.util.*;
+public class MainClass1 {
+
+	public static void main(String[] args) {
+		Complex res = new Complex();
+		int ch;
+		float real,imag;
+		Scanner input = new Scanner(System.in);
+		
+		
+		System.out.println("Enter the first complex number: ");
+		real=input.nextFloat();  
+		imag=input.nextFloat();  
+		
+		Complex c1 = new Complex(real,imag);
+		System.out.println("("+c1.realp+") + ("+c1.imagp+")i");
+		
+		
+		System.out.println("Enter the second complex number: ");
+		real=input.nextFloat();  
+		imag=input.nextFloat();  
+		
+		Complex c2 = new Complex(real,imag);
+		System.out.println("("+c2.realp+") + ("+c2.imagp+")i");
+		
+		do 
+		{
+		
+		System.out.println("\nSelect operation to be done: ");
+		System.out.println("\n1.Subtract\n2.Multiply\n3.Exit");
+		ch=input.nextInt();
+		
+		switch (ch)
+		{
+		case 1: res.sub(c1, c2); 
+			    break;
+		case 2: res.mul(c1, c2); 
+			    break;
+		case 3: System.out.println("You have succesfully exited.");
+		        break;
+		default: System.out.println("Enter appropriate choice.");
+		}
+		}while (ch!=3);
+	}
+}
+
+
+class Complex
+{
+	
+	Complex()
+	{
+		realp=0.0f;
+		imagp=0.0f;
+	}
+	
+	Complex(float real,float imag)
+	{
+		realp=real;
+		imagp=imag;
+	}
+	
+	
+	public float realp;
+	public float imagp;
+
+	public void sub(Complex c1,Complex c2)
+	{
+		float real,imag;
+		real=c1.realp-c2.realp;
+		imag=c1.imagp-c2.imagp;
+		
+		
+		System.out.println("Difference is "+"("+real+") + ("+imag+")i");
+	}
+	public void mul(Complex c1,Complex c2)
+	{
+		float real,imag;
+		real=(c1.realp*c2.realp)-(c1.imagp*c2.imagp);
+		imag=(c1.realp*c2.imagp)+(c1.imagp*c2.realp);
+		
+		
+		System.out.println("Product is "+"("+real+") + ("+imag+")i");
+	}
+}
